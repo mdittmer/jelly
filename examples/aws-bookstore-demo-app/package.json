@@ -1,0 +1,8 @@
+{
+  "name": "aws-bookstore-demo-app",
+  "version": "0.0.1",
+  "dependencies": {
+    "aws-sdk": "^2.1322.0",
+    "redis": "^4.6.4"
+  }
+}

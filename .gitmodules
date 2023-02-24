@@ -1,0 +1,3 @@
+[submodule "examples/aws-bookstore-demo-app/aws-bookstore-demo-app"]
+	path = examples/aws-bookstore-demo-app/aws-bookstore-demo-app
+	url = https://github.com/aws-samples/aws-bookstore-demo-app.git
