@@ -19,3 +19,9 @@ Messing around with small programs:
 ```bash
 jelly --dataflow-html tmp/dataflow__sandbox.html examples/micro/sandbox.ts
 ```
+
+Manually package "sandbox" entry point for experimentation with long-running invocations:
+
+```bash
+npm run clean && npm run build && pkg lib/sandbox.js -C Brotli --options \"expose-gc,huge-max-old-generation-size,max-old-space-size=16384,max-semi-space-size=16384\" -c package.json --out-path dist
+```

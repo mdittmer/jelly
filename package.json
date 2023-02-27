@@ -23,7 +23,8 @@
   ],
   "bin": {
     "jelly": "lib/main.js",
-    "jelly-server": "lib/server.js"
+    "jelly-server": "lib/server.js",
+    "jelly-sandbox": "lib/sandbox.js"
   },
   "main": "lib/lib.js",
   "scripts": {
@@ -31,7 +32,7 @@
     "build-watch": "npm run copy-bin-resources; npm run chmod; tsc --build tsconfig-build.json -w",
     "start": "node lib/main.js",
     "copy-bin-resources": "mkdir -p lib; cp -r bin resources lib",
-    "chmod": "touch lib/main.js lib/server.js; chmod +x lib/main.js lib/server.js bin/node",
+    "chmod": "touch lib/main.js lib/server.js lib/sandbox.js; chmod +x lib/main.js lib/server.js  lib/sandbox.js bin/node",
     "tests-install": "tests/install.sh",
     "test": "jest --selectProjects default",
     "differential": "jest --selectProjects differential",
