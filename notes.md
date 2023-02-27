@@ -25,3 +25,5 @@ Manually package "sandbox" entry point for experimentation with long-running inv
 ```bash
 npm run clean && npm run build && pkg lib/sandbox.js -C Brotli --options \"expose-gc,huge-max-old-generation-size,max-old-space-size=16384,max-semi-space-size=16384\" -c package.json --out-path dist
 ```
+
+For above invocation, encountered many errors of the form `Warning Failed to make bytecode node16-x64 for file /snapshot/jelly/node_modules/[...]`. Perhaps there is a step that was skipped before attempting to invoke `pkg`?
