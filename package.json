@@ -25,6 +25,7 @@
     "jelly": "lib/main.js",
     "jelly-server": "lib/server.js"
   },
+  "main": "lib/lib.js",
   "scripts": {
     "build": "npm run copy-bin-resources; npm run chmod; tsc --build tsconfig-build.json",
     "build-watch": "npm run copy-bin-resources; npm run chmod; tsc --build tsconfig-build.json -w",

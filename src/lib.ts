@@ -1,0 +1,12 @@
+export {AnalysisStateReporter} from "./output/analysisstatereporter";
+export {analyzeFiles} from "./analysis/analyzer";
+export {autoDetectBaseDir, expand as expandSourceFiles} from "./misc/files";
+export {CallGraph} from "callgraph";
+export {default as logger, logToFile, setLogLevel} from "./misc/logger";
+export {default as Solver} from "./analysis/solver";
+export {exportCallGraphHtml, exportDataFlowGraphHtml} from "./output/visualizer";
+export {merge as mergeCallgraphs} from "./output/merge";
+export {options, setOptions} from "./options";
+export {TypeScriptTypeInferrer} from "./typescript/typeinferrer";
+export {Vulnerability} from "vulnerabilities";
+export {VulnerabilityDetector, VulnerabilityResults} from "./patternmatching/vulnerabilitydetector";
