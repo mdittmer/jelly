@@ -113,7 +113,7 @@ import {
 import {Operations} from "./operations";
 import {TokenListener} from "./listeners";
 
-export const IDENTIFIER_KIND = Symbol();
+export const IDENTIFIER_PATH = Symbol();
 
 export function visit(ast: File, op: Operations) {
     const solver = op.solver;
@@ -184,9 +184,7 @@ export function visit(ast: File, op: Operations) {
                 a.varProducer.identVar(path.node, path); // FIXME: registerArguments may be called too late if the function is recursive
 
             if (options.variableKinds) {
-                const binding = path.scope.getBinding(path.node.name);
-                if (binding)
-                    (binding.identifier as any)[IDENTIFIER_KIND] = binding.kind;
+                (path.node as any)[IDENTIFIER_PATH] = path;
             }
         },
 

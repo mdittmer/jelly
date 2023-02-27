@@ -1,4 +1,4 @@
-import {Class, Function, isIdentifier, Node} from "@babel/types";
+import {Class, Function, Identifier, isIdentifier, Node} from "@babel/types";
 import {nodeToString, sourceLocationToStringWithFileAndEnd} from "../misc/util";
 import {
     AllocationSiteToken,
@@ -8,7 +8,8 @@ import {
     PackageObjectToken
 } from "./tokens";
 import {ModuleInfo, PackageInfo} from "./infos";
-import {IDENTIFIER_KIND} from "./astvisitor";
+import {IDENTIFIER_PATH} from "./astvisitor";
+import {NodePath} from "@babel/traverse";
 
 /**
  * A constraint variable.
@@ -51,8 +52,26 @@ export class NodeVar extends ConstraintVar {
         return this.node;
     }
 
+    getPath(): NodePath<Identifier> | undefined {
+        return isIdentifier(this.node) ? (this.node as any)[IDENTIFIER_PATH] : undefined;
+    }
+
     getKind(): string {
-        return isIdentifier(this.node) ? `Identifier[${(this.node as any)[IDENTIFIER_KIND]}]` : this.node.type;
+        if (!isIdentifier(this.node)) {
+            return this.node.type;
+        } else {
+            const path = this.getPath();
+            if (path) {
+                const binding = path.scope.getBinding(this.node.name);
+                if (binding) {
+                    return `Identifier[${binding.kind}]`;
+                } else {
+                    return `Identifier[${path.parent.type}]`;
+                }
+            } else {
+                return "Identifier";
+            }
+        }
     }
 }
 
